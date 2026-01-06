@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 96%;
+
+    --card: 222 47% 9%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 222 47% 9%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 190 100% 50%;
+    --primary-foreground: 222 47% 6%;
+
+    --secondary: 222 30% 15%;
+    --secondary-foreground: 210 40% 96%;
+
+    --muted: 222 30% 12%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 280 70% 55%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 30% 18%;
+    --input: 222 30% 15%;
+    --ring: 190 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom electric theme colors */
+    --electric-blue: 190 100% 50%;
+    --electric-glow: 190 100% 60%;
+    --voltage-yellow: 45 100% 55%;
+    --resistance-orange: 25 95% 55%;
+    --current-cyan: 175 100% 45%;
+    --wire-color: 220 20% 25%;
+    --component-bg: 222 40% 12%;
+    
+    /* Gradients */
+    --gradient-electric: linear-gradient(135deg, hsl(190 100% 50%), hsl(175 100% 45%));
+    --gradient-voltage: linear-gradient(135deg, hsl(45 100% 55%), hsl(35 100% 50%));
+    --gradient-resistance: linear-gradient(135deg, hsl(25 95% 55%), hsl(15 90% 50%));
+    
+    /* Shadows */
+    --glow-electric: 0 0 20px hsl(190 100% 50% / 0.4), 0 0 40px hsl(190 100% 50% / 0.2);
+    --glow-voltage: 0 0 15px hsl(45 100% 55% / 0.4);
+    --glow-resistance: 0 0 15px hsl(25 95% 55% / 0.4);
+    --glow-current: 0 0 20px hsl(175 100% 45% / 0.5);
+
+    --sidebar-background: 222 47% 6%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 190 100% 50%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 222 30% 15%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 222 30% 18%;
+    --sidebar-ring: 190 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .electric-glow {
+    box-shadow: var(--glow-electric);
+  }
+
+  .voltage-glow {
+    box-shadow: var(--glow-voltage);
+  }
+
+  .resistance-glow {
+    box-shadow: var(--glow-resistance);
+  }
+
+  .current-glow {
+    box-shadow: var(--glow-current);
+  }
+
+  .glass-panel {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 rounded-xl;
+  }
+}
+
+@layer utilities {
+  @keyframes electron-flow {
+    0% {
+      stroke-dashoffset: 0;
+    }
+    100% {
+      stroke-dashoffset: -40;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .animate-electron-flow {
+    animation: electron-flow var(--flow-speed, 1s) linear infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
